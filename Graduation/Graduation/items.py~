@@ -1,0 +1,37 @@
+# -*- coding: utf-8 -*-
+
+# Define here the models for your scraped items
+#
+# See documentation in:
+# http://doc.scrapy.org/en/latest/topics/items.html
+
+import scrapy
+
+
+class GraduationItem(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    pass
+
+class LinkItem(scrapy.Item):
+    urls = scrapy.Field()
+    Docs = scrapy.Field()
+
+class DocItem(scrapy.Item):
+    url = scrapy.Field()
+    title = scrapy.Field()
+    content = scrapy.Field()
+    weight = scrapy.Field()
+    category = scrapy.Field()
+    paragraphs = scrapy.Field()
+
+class Paragraph(scrapy.Item):
+    content = scrapy.Field()
+    weight = scrapy.Field()
+    sentences = scrapy.Field()
+    
+class SentenceItem(scrapy.Item):
+    weight = scrapy.Field()
+    simi = scrapy.Field()
+    content = scrapy.Field()
+

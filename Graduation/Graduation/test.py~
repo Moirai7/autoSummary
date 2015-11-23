@@ -1,0 +1,25 @@
+import os
+os.environ.setdefault('SCRAPY_SETTINGS_MODULE', 'settings')
+  
+from scrapy.xlib.pydispatch import dispatcher
+from scrapy.core import signals
+from scrapy.conf import settings
+from scrapy.crawler import CrawlerThread
+  
+settings.overrides['LOG_ENABLED'] = False # avoid log noise
+  
+def item_passed(item):
+    print "Just scraped item:", item
+  
+dispatcher.connect(item_passed, signal=signals.item_passed)
+  
+crawler = CrawlerThread()
+print "Starting crawler thread..."
+crawler.start()
+print "Crawling somedomain.com...."
+crawler.crawl('somedomain.com) # blocking call
+print "Crawling anotherdomain.com..."
+crawler.crawl('anotherdomain.com') # blocking call
+print "Stopping crawler thread..."
+crawler.stop()
+

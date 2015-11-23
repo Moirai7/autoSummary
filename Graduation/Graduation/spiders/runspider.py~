@@ -1,0 +1,7 @@
+from scrapy.crawler import CrawlerProcess
+from scrapy.utils.project import get_project_settings
+
+process = CrawlerProcess(get_project_settings())
+
+process.crawl('news', query='\u4f18\u8863\u5e93\u5973\u4e3b\u89d2\u8df3\u697c')
+process.start()
